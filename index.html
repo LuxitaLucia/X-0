@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tick tac toe</title>
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+        background-color: black;
+        color: white;
+      }
+
+      h1 {
+        text-align: center;
+      }
+      .boardWrapper {
+        width: 296px;
+        height: 296px;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      .board {
+        display: flex;
+        flex-wrap: wrap;
+        width: 300px;
+        height: 300px;
+        background-color: white;
+        position: relative;
+        top: -2px;
+        left: -2px;
+      }
+
+      .cell {
+        width: 96px;
+        height: 96px;
+        background-color: black;
+        margin: 2px;
+        position: relative;
+        cursor: pointer;
+      }
+      .cell.x::after {
+        content: "X";
+        font-size: 80px;
+        position: absolute;
+        top: 0;
+        left: 20px;
+      }
+      .cell.o::after {
+        content: "O";
+        font-size: 80px;
+        position: absolute;
+        top: 0;
+        left: 20px;
+      }
+      .gameOver {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.9);
+        inset: 0;
+        display: none;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+      }
+      .gameOver.show {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 50px">Tick tac toe</h1>
+    <div class="boardWrapper">
+      <div class="board">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </div>
+    </div>
+    <div class="gameOver">
+      <h2>X wins</h2>
+      <h3>Refresh to play again</h3>
+    </div>
+    <script>
+      const cells = document.querySelectorAll(".cell");
+      const gameOver = document.querySelector(".gameOver");
+      const gameOverText = document.querySelector(".gameOver h2");
+
+      let currentPlayer = "x";
+
+      for (const cell of cells) {
+        cell.addEventListener("click", (e) => {
+          e.target.classsList.add(currentPlayer);
+
+          if (currentPlayer == "x") currentPlayer = "o";
+          else currentPlayer = "x";
+        });
+      }
+    </script>
+  </body>
+</html>
