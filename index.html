@@ -114,9 +114,9 @@
 
             for (const moove of winningMoves) {
               if (
-                cells[0].classList.contains(currentPlayer) &&
-                cells[1].classList.contains(currentPlayer) &&
-                cells[2].classList.contains(currentPlayer)
+                cells[moove[0]].classList.contains(currentPlayer) &&
+                cells[moove[1]].classList.contains(currentPlayer) &&
+                cells[moove[2]].classList.contains(currentPlayer)
               ) {
                 gameOver.classList.add("show");
                 gameOver.innerHTML = `${currentPlayer} wins`;
